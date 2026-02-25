@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* ─── Brand Variables ─── */
+:root {
+  --primary: #0a0a0f;
+  --accent: #635BFF;
+  --accent-light: #7c75ff;
+  --accent-bg: rgba(99, 91, 255, 0.08);
+  --accent-20: rgba(99, 91, 255, 0.2);
+  --accent-30: rgba(99, 91, 255, 0.3);
+}
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Hero Entry Animations ─── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-anim {
+  opacity: 0;
+  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-anim.delay-1 { animation-delay: 0.12s; }
+.hero-anim.delay-2 { animation-delay: 0.24s; }
+.hero-anim.delay-3 { animation-delay: 0.36s; }
+.hero-anim.delay-4 { animation-delay: 0.5s; }
+
+/* ─── Waveform Bar Animation ─── */
+@keyframes waveBar {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+
+.waveform-bar {
+  height: 100%;
+  transform-origin: center;
+  animation: waveBar 1.2s ease-in-out infinite;
+}
+
+/* ─── Phone Float ─── */
+@keyframes floatPhone {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+.phone-float-desktop {
+  animation: floatPhone 4s ease-in-out infinite;
+}
+
+/* ─── Flow Particle Animation ─── */
+@keyframes particleFlow {
+  0% { left: -4%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: 104%; opacity: 0; }
+}
+
+.flow-particle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent), 0 0 4px var(--accent);
+  animation: particleFlow 2.4s linear infinite;
+}
+
+/* ─── Flow Vertical Particle (Mobile) ─── */
+@keyframes particleFlowDown {
+  0% { top: -4%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 104%; opacity: 0; }
+}
+
+.flow-particle-v {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: particleFlowDown 1.8s linear infinite;
+}
+
+/* ─── Pulse ring for record button ─── */
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.pulse-ring {
+  animation: pulseRing 1.5s ease-out infinite;
+}
+
+/* ─── Subtle glow pulse ─── */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.3; }
+}
+
+.glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ─── Selection color ─── */
+::selection {
+  background: var(--accent-20);
+  color: var(--primary);
+}
+
+/* ─── Focus styles ─── */
+input:focus, textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-20) !important;
+}
